@@ -1,0 +1,25 @@
+nav {
+  background-color: #DDDDDD;
+  padding: 0.5em;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  text-decoration: none;
+  padding: 1em;
+  color: black;
+}
+
+li a:hover {
+  background-color: #EEEEEE;
+}

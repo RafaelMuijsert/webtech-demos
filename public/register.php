@@ -26,17 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Webtech Demo</title>
-    <link rel="stylesheet" href="/register/style.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
+    <?php include "../src/components/header.php" ?>
+    <?php include "../src/components/navbar.php" ?>
     <main>
         <form method="post" class="register-form">
-          <h2>Register</h2>
+          <h1>Register</h1>
           <input name="user-email" type="email" placeholder="me@mail.org">
           <input name="user-password" type="password" placeholder="********">
           <input id="register-btn" type="submit" value="Submit">
         </form>
     </main>
+    <?php include "../src/components/footer.php" ?>
   </body>
 </html>
