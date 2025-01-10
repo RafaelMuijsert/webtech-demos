@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Webtech Demo</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/partial/register.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <h1>Register</h1>
           <input name="user-email" type="email" placeholder="me@mail.org">
           <input name="user-password" type="password" placeholder="********">
-          <input id="register-btn" type="submit" value="Submit">
+          <input id="register-btn" class="btn-primary btn-register" type="submit" value="Submit">
         </form>
     </main>
     <?php include "../src/components/footer.php" ?>
