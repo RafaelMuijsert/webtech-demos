@@ -1,0 +1,68 @@
+/*
+Je kunt gemakkelijk andere lettertypes gebruiken op je website.
+Google Fonts (fonts.google.com) is een goede plek om nieuwe lettertypes te vinden.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/*
+De '*' tag is een wildcard.
+Dat wil zeggen: alle styling in deze tag wordt toegepast op elk element.
+*/
+* {
+  font-family: "Montserrat", serif;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  /*
+  `display: flex` is een handige CSS property om containers
+  op de juiste plek te krijgen. 
+
+  Als je hiermee wilt oefenen is https://flexboxfroggy.com/ erg handig.
+  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #EEEEEE;
+}
+
+/*
+Gebruik de .-prefix om styling toe te passen op een HTML class.
+*/
+.register-form {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+  margin: auto;
+  align-items: center;
+  background: #DDDDDD;
+  /*
+  Een 'em' is een relatieve eenheid.
+  Het is vaak verstandig om deze eenheden te gebruiken, omdat dit zorgt
+  voor schaalbare en responsive ontwerpen die zich aanpassen aan de
+  lettergrootte van het element of zijn context.
+  */
+  padding: 2em;
+}
+
+/*
+Hiermee stylen we alle input elementen.
+*/
+input {
+  margin-bottom: 0.5em;
+}
+
+/*
+Met de #-prefix selecteren we een element met een specifieke ID.
+*/
+#register-btn {
+  width: 100%;
+  padding: 0.5em;
+  background-color: #C1E1C1;
+  border: none;
+}
