@@ -1,0 +1,12 @@
+.container {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: 20em;
+  margin: 4em auto;
+  align-items: center;
+  background: #EFEFEF;
+  padding: 1em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

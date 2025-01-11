@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include "../src/components/header.php" ?>
     <?php include "../src/components/navbar.php" ?>
     <main>
-        <form method="post" class="register-form">
+        <form method="post" action="/register.php" class="container">
           <h1>Register</h1>
           <input name="user-email" type="email" placeholder="me@mail.org">
           <input name="user-password" type="password" placeholder="********">
