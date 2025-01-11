@@ -20,17 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php require_once "../src/components/header.php" ?>
     <?php require_once "../src/components/navbar.php" ?>
     <main>
-      <div class="container">
-        <?php if (isset($_SESSION['name'])): ?>
+      <?php if (isset($_SESSION['name'])): ?>
+        <div class="container">
           <div>Hello there, <?=$_SESSION['name']?></div>
-        <?php else: ?>
-          <form method="post">
-            <label for="name-input">Who are you?</label>
-            <input id="name-input" name="name">
-            <input type="submit" class="btn-primary" value="Submit">
-          </form>
-        <?php endif; ?>
-      </div>
+        </div>
+      <?php else: ?>
+        <form class="container" method="post">
+          <h1>Who are you?</h1>
+          <input id="name-input" name="name" placeholder="Enter your name...">
+          <input type="submit" class="btn-primary" value="Submit">
+        </form>
+      <?php endif; ?>
     </main>
     <?php require_once "../src/components/footer.php" ?>
   </body>

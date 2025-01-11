@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Plaats de nieuwe user in de database
   // $databaseConnection = connectToDatabase();
-
+  $registrationSuccesful = true;
 }
 ?>
 
@@ -36,6 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <form method="post" action="/register.php" class="container">
           <h1>Register</h1>
+          <?php if (isset($registrationSuccesful)): ?>
+            <?php if ($registrationSuccesful === true): ?>
+              <p class="success">Registration succesful</p>
+            <?php else: ?>
+              <p class="error">Registration failed</p>
+            <?php endif; ?>
+          <?php endif; ?>
           <input name="user-email" type="email" placeholder="me@mail.org">
           <input name="user-password" type="password" placeholder="********">
           <input id="register-btn" class="btn-primary btn-register" type="submit" value="Submit">

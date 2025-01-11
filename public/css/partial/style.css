@@ -1,9 +1,7 @@
 .box {
-  max-width: 20em;
-  margin: 5em auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .item-left {
