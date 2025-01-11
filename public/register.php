@@ -1,21 +1,43 @@
 <?php
-// Er kunnen verschillende requests worden gestuurd.
-// Als de pagina wordt opgevraagd, gaat dit via een GET request.
-// Als een form wordt verstuurd, gaat dit via een POST request.
-// Ons registratieformulier wordt dus met een POST request verzonden.
-// De request-methode staat opgeslagen in $_SERVER['REQUEST_METHOD'].
-// $_SERVER is een array met informatie, waaronder:
-// - headers
-// - paths
-// - script locations
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Haal de benodigde informatie uit de request
+require_once("../src/database.php");
+
+function handleRegistration() {
+  $PASSWORD_MIN_CHARACTERS = 8;
+
   $email = $_POST['user-email'];
   $password = $_POST['user-password'];
 
-  // Plaats de nieuwe user in de database
-  // $databaseConnection = connectToDatabase();
-  $registrationSuccesful = true;
+  if (strlen($password) < $PASSWORD_MIN_CHARACTERS) {
+    $GLOBALS['error'] = "Password should be at least $PASSWORD_MIN_CHARACTERS characters";
+    return false;
+  } else {
+    try {
+      $databaseConnection = connectToDatabase();
+    } catch (Exception $exception) {
+      $GLOBALS['error'] = "Could not connect to database";
+      return false;
+    }
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $statement = <<<'SQL'
+      INSERT INTO User(email, password)
+      VALUES (?, ?);
+      SQL;
+
+    try {
+      $prepared = $databaseConnection->prepare($statement);
+      $prepared->bind_param('ss', $email, $password);
+      $prepared->execute();
+      $databaseConnection->commit();
+    } catch (Exception $e) {
+      $GLOBALS['error'] = "Could not create user";
+      return false;
+    }
+  }
+  return true;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $registrationSuccesful = handleRegistration();
 }
 ?>
 
@@ -40,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if ($registrationSuccesful === true): ?>
               <p class="success">Registration succesful</p>
             <?php else: ?>
-              <p class="error">Registration failed</p>
+              <p class="error">Registration failed: <?=$GLOBALS['error']?></p>
             <?php endif; ?>
           <?php endif; ?>
           <input name="user-email" type="email" placeholder="me@mail.org">
