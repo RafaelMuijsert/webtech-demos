@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS webtechdemo;
+-- DROP DATABASE IF EXISTS webtechdemo;
 CREATE DATABASE webtechdemo;
 USE webtechdemo;
 CREATE TABLE User (
