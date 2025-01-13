@@ -10,7 +10,7 @@ Ensure this file is created and contains a valid user.
 = Running development server
 To start the development server,
 execute the following command in the project root:
+
 ```bash
 php -S localhost:8080 -t ./public
 ```
-
