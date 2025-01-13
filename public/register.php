@@ -1,5 +1,5 @@
 <?php
-require_once("../src/database.php");
+require_once "../src/database.php";
 
 function handleRegistration()
 {
@@ -54,16 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <?php include "../src/components/header.php" ?>
-    <?php include "../src/components/navbar.php" ?>
+    <?php require "../src/components/header.php" ?>
+    <?php require "../src/components/navbar.php" ?>
     <main>
         <form method="post" action="/register.php" class="container">
           <h1>Register</h1>
-          <?php if (isset($registrationSuccesful)): ?>
-            <?php if ($registrationSuccesful === true): ?>
+          <?php if (isset($registrationSuccesful)) : ?>
+                <?php if ($registrationSuccesful === true) : ?>
               <p class="success">Registration succesful</p>
             <?php else: ?>
-              <p class="error">Registration failed: <?=$GLOBALS['error']?></p>
+              <p class="error">Registration failed: <?php echo $GLOBALS['error']?></p>
             <?php endif; ?>
           <?php endif; ?>
           <input name="user-email" type="email" placeholder="me@mail.org">
@@ -71,6 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <input id="register-btn" class="btn-primary btn-register" type="submit" value="Submit">
         </form>
     </main>
-    <?php include "../src/components/footer.php" ?>
+    <?php require "../src/components/footer.php" ?>
   </body>
 </html>

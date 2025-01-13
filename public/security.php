@@ -78,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <?php foreach (getComments() as $comment): ?>
         <div class="container comment">
           <div>
-            <b><?=$comment['username']?>:</b>
-            <a><?=$comment['text']?></a>
+            <b><?php echo $comment['username']?>:</b>
+            <a><?php echo $comment['text']?></a>
           </div>
         </div>
       <?php endforeach; ?>

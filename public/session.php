@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php require_once "../src/components/header.php" ?>
     <?php require_once "../src/components/navbar.php" ?>
     <main>
-      <?php if (isset($_SESSION['name'])): ?>
+      <?php if (isset($_SESSION['name'])) : ?>
         <div class="container">
-          <div>Hello there, <?=$_SESSION['name']?></div>
+          <div>Hello there, <?php echo $_SESSION['name']?></div>
         </div>
       <?php else: ?>
         <form class="container" method="post">
