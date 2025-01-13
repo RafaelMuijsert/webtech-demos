@@ -1,43 +1,44 @@
 <?php
 require_once("../src/database.php");
 
-function handleRegistration() {
-  $PASSWORD_MIN_CHARACTERS = 8;
+function handleRegistration()
+{
+    $PASSWORD_MIN_CHARACTERS = 8;
 
-  $email = $_POST['user-email'];
-  $password = $_POST['user-password'];
+    $email = $_POST['user-email'];
+    $password = $_POST['user-password'];
 
-  if (strlen($password) < $PASSWORD_MIN_CHARACTERS) {
-    $GLOBALS['error'] = "Password should be at least $PASSWORD_MIN_CHARACTERS characters";
-    return false;
-  } else {
-    try {
-      $databaseConnection = connectToDatabase();
-    } catch (Exception $exception) {
-      $GLOBALS['error'] = "Could not connect to database";
-      return false;
-    }
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    $statement = <<<'SQL'
+    if (strlen($password) < $PASSWORD_MIN_CHARACTERS) {
+        $GLOBALS['error'] = "Password should be at least $PASSWORD_MIN_CHARACTERS characters";
+        return false;
+    } else {
+        try {
+            $databaseConnection = connectToDatabase();
+        } catch (Exception $exception) {
+            $GLOBALS['error'] = "Could not connect to database";
+            return false;
+        }
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $statement = <<<'SQL'
       INSERT INTO User(email, password)
       VALUES (?, ?);
       SQL;
 
-    try {
-      $prepared = $databaseConnection->prepare($statement);
-      $prepared->bind_param('ss', $email, $password);
-      $prepared->execute();
-      $databaseConnection->commit();
-    } catch (Exception $e) {
-      $GLOBALS['error'] = "Could not create user";
-      return false;
+        try {
+            $prepared = $databaseConnection->prepare($statement);
+            $prepared->bind_param('ss', $email, $password);
+            $prepared->execute();
+            $databaseConnection->commit();
+        } catch (Exception $e) {
+            $GLOBALS['error'] = "Could not create user";
+            return false;
+        }
     }
-  }
-  return true;
+    return true;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $registrationSuccesful = handleRegistration();
+    $registrationSuccesful = handleRegistration();
 }
 ?>
 

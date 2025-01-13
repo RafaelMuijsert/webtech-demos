@@ -1,53 +1,55 @@
 <?php
 require "../src/database.php";
 
-function getComments() {
-  try {
-    $databaseConnection = connectToDatabase();
-  } catch (Exception $exception) {
-    die("Could not connect to database");
-  }
+function getComments()
+{
+    try {
+        $databaseConnection = connectToDatabase();
+    } catch (Exception $exception) {
+        die("Could not connect to database");
+    }
 
-  $sql = "SELECT username, text FROM Comment";
-  $result = $databaseConnection->query($sql);
-  while ($row = $result->fetch_assoc()) {
-    yield $row;
-  }
+    $sql = "SELECT username, text FROM Comment";
+    $result = $databaseConnection->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        yield $row;
+    }
 }
 
-function postComment($username, $text) {
-  try {
-    $databaseConnection = connectToDatabase();
-  } catch (Exception $exception) {
-    $GLOBALS['error'] = "Could not connect to database";
-    return false;
-  }
+function postComment($username, $text)
+{
+    try {
+        $databaseConnection = connectToDatabase();
+    } catch (Exception $exception) {
+        $GLOBALS['error'] = "Could not connect to database";
+        return false;
+    }
 
-  $statement = <<<'SQL'
+    $statement = <<<'SQL'
     INSERT INTO Comment(username, text)
     VALUES (?, ?);
     SQL;
 
-  try {
-    $prepared = $databaseConnection->prepare($statement);
+    try {
+        $prepared = $databaseConnection->prepare($statement);
 
-    // $encodedName = htmlspecialchars($username);
-    // $encodedText = htmlspecialchars($text);
+        // $encodedName = htmlspecialchars($username);
+        // $encodedText = htmlspecialchars($text);
 
-    // $prepared->bind_param('ss', $encodedName, $encodedText);
+        // $prepared->bind_param('ss', $encodedName, $encodedText);
 
-    $prepared->bind_param('ss', $username, $text);
-    $prepared->execute();
-    $databaseConnection->commit();
-  } catch (Exception $e) {
-    $GLOBALS['error'] = "Could not post comment";
-    return false;
-  }
-  return true;
+        $prepared->bind_param('ss', $username, $text);
+        $prepared->execute();
+        $databaseConnection->commit();
+    } catch (Exception $e) {
+        $GLOBALS['error'] = "Could not post comment";
+        return false;
+    }
+    return true;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $postSuccesful = postComment($_POST['username'], $_POST['text']);
+    $postSuccesful = postComment($_POST['username'], $_POST['text']);
 }
 
 ?>

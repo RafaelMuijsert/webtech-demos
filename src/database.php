@@ -1,4 +1,5 @@
 <?php
+
 $HOST = 'localhost';
 $DATABASE = 'webtechdemo';
 
@@ -19,9 +20,8 @@ function connectToDatabase()
         $GLOBALS['DATABASE'],
     );
     if ($connection->connect_error) {
-        die ('Connection failed: ' . $connection->connect_error);
+        die('Connection failed: ' . $connection->connect_error);
     }
     $connection->autocommit(false);
     return $connection;
 }
-?>
