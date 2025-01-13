@@ -23,7 +23,13 @@ $DATABASE = 'webtechdemo';
 function connectToDatabase()
 {
     $file = file_get_contents("../database-creds.xml", true);
+    if ($file === false) {
+        die("Could not read database credentials");
+    }
     $xml = simplexml_load_string($file);
+    if ($xml === false) {
+        die("Database credentials file contains invalid XML");
+    }
     $user = $xml->userName;
     $password = $xml->password;
     $connection = new mysqli(

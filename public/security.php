@@ -17,7 +17,7 @@ require "../src/database.php";
 /**
  * Fetch comments from database.
  *
- * @return array: array containing 'username' and 'text' fields.
+ * @return Generator<array<string, string>>
  */
 function getComments()
 {
@@ -29,6 +29,12 @@ function getComments()
 
     $sql = "SELECT username, text FROM Comment";
     $result = $databaseConnection->query($sql);
+    if ($result === false) {
+        die("Could not read comments from database");
+    }
+    if ($result === true) {
+        return [];
+    }
     while ($row = $result->fetch_assoc()) {
         yield $row;
     }
@@ -58,6 +64,10 @@ function postComment($username, $text)
 
     try {
         $prepared = $databaseConnection->prepare($statement);
+        if ($prepared === false) {
+            $GLOBALS['error'] = "Could not prepare statement";
+            return false;
+        }
 
         // $encodedName = htmlspecialchars($username);
         // $encodedText = htmlspecialchars($text);
