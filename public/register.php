@@ -1,6 +1,23 @@
 <?php
+/**
+ * Demo page to demonstrate registration functionality.
+ * 
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Rafael Alexander Muijsert <rafael@muijsert.org>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
+ */
 require_once "../src/database.php";
 
+/**
+ * Register a new user.
+ * Reads email and password from $_POST data.
+ *
+ * @return bool: true if the comment was posted succesfully.
+ */
 function handleRegistration()
 {
     $PASSWORD_MIN_CHARACTERS = 8;
@@ -9,7 +26,8 @@ function handleRegistration()
     $password = $_POST['user-password'];
 
     if (strlen($password) < $PASSWORD_MIN_CHARACTERS) {
-        $GLOBALS['error'] = "Password should be at least $PASSWORD_MIN_CHARACTERS characters";
+        $error = "Password should be at least $PASSWORD_MIN_CHARACTERS characters";
+        $GLOBALS['error'] = $error;
         return false;
     } else {
         try {
@@ -58,17 +76,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php require "../src/components/navbar.php" ?>
     <main>
         <form method="post" action="/register.php" class="container">
-          <h1>Register</h1>
-          <?php if (isset($registrationSuccesful)) : ?>
+            <h1>Register</h1>
+            <?php if (isset($registrationSuccesful)) : ?>
                 <?php if ($registrationSuccesful === true) : ?>
-              <p class="success">Registration succesful</p>
-            <?php else: ?>
-              <p class="error">Registration failed: <?php echo $GLOBALS['error']?></p>
+                    <p class="success">Registration succesful</p>
+                <?php else: ?>
+                    <p class="error">
+                        Registration failed: <?php echo $GLOBALS['error']?>'    
+                    </p>
+                <?php endif; ?>
             <?php endif; ?>
-          <?php endif; ?>
-          <input name="user-email" type="email" placeholder="me@mail.org">
-          <input name="user-password" type="password" placeholder="********">
-          <input id="register-btn" class="btn-primary btn-register" type="submit" value="Submit">
+            <input name="user-email" type="email" placeholder="me@mail.org">
+            <input name="user-password" type="password" placeholder="********">
+            <input
+                id="register-btn"
+                class="btn-primary btn-register"
+                type="submit"
+                value="Submit"
+            />
         </form>
     </main>
     <?php require "../src/components/footer.php" ?>

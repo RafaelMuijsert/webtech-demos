@@ -1,6 +1,24 @@
 <?php
+/**
+ * Demo page used to demonstrate security.
+ * Contains an XSS-vulnerable comment system.
+ * 
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Rafael Alexander Muijsert <rafael@muijsert.org>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
+ */
+
 require "../src/database.php";
 
+/**
+ * Fetch comments from database.
+ *
+ * @return array: array containing 'username' and 'text' fields.
+ */
 function getComments()
 {
     try {
@@ -16,6 +34,14 @@ function getComments()
     }
 }
 
+/**
+ * Insert a comment into the database.
+ *
+ * @param string $username username of the comment.
+ * @param string $text     text of the comment.
+ *
+ * @return bool: true if the comment was posted succesfully.
+ */
 function postComment($username, $text)
 {
     try {
