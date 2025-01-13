@@ -44,6 +44,10 @@ function handleRegistration()
 
         try {
             $prepared = $databaseConnection->prepare($statement);
+            if ($prepared === false) {
+                $GLOBALS['error'] = "Could not prepare statement";
+                return false;
+            }
             $prepared->bind_param('ss', $email, $password);
             $prepared->execute();
             $databaseConnection->commit();
