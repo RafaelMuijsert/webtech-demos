@@ -1,3 +1,16 @@
+<?php
+/**
+ * Home page for the webtech demo.
+ * 
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Rafael Alexander Muijsert <rafael@muijsert.org>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

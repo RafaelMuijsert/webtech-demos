@@ -1,11 +1,24 @@
 <?php
+/**
+ * Utility file used to connect to the database.
+ * Reads database credentials from ../database-creds.xml.
+ * 
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Rafael Alexander Muijsert <rafael@muijsert.org>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
+ */
 
 $HOST = 'localhost';
 $DATABASE = 'webtechdemo';
 
-/*
- * Connects to the server's database
- * Returns a database connection if succesful, otherwies dies.
+/**
+ * Connect to the database.
+ *
+ * @return mysqli: active connection to the database.
  */
 function connectToDatabase()
 {

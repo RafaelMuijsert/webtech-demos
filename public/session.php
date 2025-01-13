@@ -1,4 +1,16 @@
 <?php
+/**
+ * Demo page used to demonstrate sessions.
+ * 
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Rafael Alexander Muijsert <rafael@muijsert.org>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
+ */
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
