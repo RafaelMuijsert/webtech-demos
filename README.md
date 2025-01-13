@@ -3,6 +3,18 @@ This is a tutorial PHP project.
 Its directory structure is based on
 [php-pds skeleton](https://github.com/php-pds/skeleton).
 
+# Installation
+Since the website uses MySQL and XML for the database,
+the following additional packages are required:
+- php-mysql
+- php-xml
+
+You can install these with the following commands:
+```bash
+$ sudo apt update
+$ sudo apt install php-mysql php-xml
+```
+
 # Database configuration
 
 We can create the required tables using the provided SQL script:
