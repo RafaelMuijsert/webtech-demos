@@ -50,7 +50,7 @@ is present in the `<userName>` tag, and our paassword is present in the `<passwo
 # Running development server
 To start the development server,
 execute the following command in the project root:
+
 ```bash
 php -S localhost:8080 -t ./public
 ```
-

@@ -4,10 +4,10 @@
   border-radius: 8px;
   margin-top: 1em;
   width: 100%;
-  background-color: #C1E1C1;
+  background-color: #c1e1c1;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  background-color: #C5E5C5;
+  background-color: #c5e5c5;
 }
