@@ -17,8 +17,6 @@ require_once("../src/database.php");
   <body>
     <?php require_once "../src/components/header.php" ?>
     <?php require_once "../src/components/navbar.php" ?>
-    <script src="/js/main.js"></script>
-    <script src="/js/pages/weather.js"></script>
     <main>
       <div class="container">
         <h1>Weather Information</h1>
@@ -30,5 +28,7 @@ require_once("../src/database.php");
       </div>
     </main>
     <?php require_once "../src/components/footer.php" ?>
+    <script src="js/main.js"></script>
+    <script src="js/pages/weather.js"></script>
   </body>
 </html>
