@@ -1,7 +1,6 @@
 RewriteEngine On
 RewriteBase /
 
-Options -Indexes
 DirectoryIndex public/index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
