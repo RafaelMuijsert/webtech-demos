@@ -14,8 +14,3 @@ RedirectMatch 403 ^/bin/.*$
     Order allow,deny
     Deny from all
 </FilesMatch>
-
-<DirectoryMatch "^/var/www/html/(src|config|bin)/">
-    Order allow,deny
-    Deny from all
-</DirectoryMatch>
