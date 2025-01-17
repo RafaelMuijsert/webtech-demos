@@ -3,11 +3,6 @@ RewriteBase /
 
 DirectoryIndex public/index.php
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/public/
-RewriteRule ^(.*)$ public/$1 [L]
-
 RedirectMatch 403 ^/src/.*$
 RedirectMatch 403 ^/config/.*$
 RedirectMatch 403 ^/bin/.*$
