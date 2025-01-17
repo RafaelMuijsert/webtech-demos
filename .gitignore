@@ -1,1 +1,2 @@
-config/*
+config/api_config.xml
+config/database-creds.xml
