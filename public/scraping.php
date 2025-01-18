@@ -14,6 +14,9 @@
 $URL = "http://www.scrapethissite.com/pages/simple/";
 
 $curl = curl_init($URL);
+if ($curl === false) {
+  die("Could not initialize cURL");
+}
 /* Return response as a string. */
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 /* Follow any encountered redirects. */
@@ -21,6 +24,9 @@ curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 
 /* Send the request to the destination. */
 $response = curl_exec($curl);
+if ($response === false || $response === true) {
+  die("Could not read response");
+}
 
 /* Create an empty DOM. */
 $dom = new DOMDocument();
@@ -38,6 +44,9 @@ libxml_use_internal_errors($previous_state);
 $xpath = new DOMXPath($dom);
 /* Retrieve all h3 elements with a country-name class. */
 $countryElements = $xpath->query("//h3[contains(@class, 'country-name')]");
+if ($countryElements === false) {
+  die("Could not read countries from response");
+}
 
 $countries = [];
 foreach ($countryElements as $country) {
