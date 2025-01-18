@@ -6,5 +6,6 @@
         <li><a href="/session.php">Session</a></li>
         <li><a href="/register.php">Register</a></li>
         <li><a href="/security.php">Security</a></li>
+        <li><a href="/scraping.php">Webscraping</a></li>
     </ul>
 </nav>
