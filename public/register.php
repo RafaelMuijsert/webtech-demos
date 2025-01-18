@@ -1,7 +1,7 @@
 <?php
 /**
  * Demo page to demonstrate registration functionality.
- * 
+ *
  * PHP version 8
  *
  * @category Webtech_Demo

@@ -1,7 +1,7 @@
 <?php
 /**
  * Demo page used to demonstrate web scraping.
- * 
+ *
  * PHP version 8
  *
  * @category Webtech_Demo

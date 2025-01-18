@@ -2,7 +2,7 @@
 /**
  * Demo page used to demonstrate security.
  * Contains an XSS-vulnerable comment system.
- * 
+ *
  * PHP version 8
  *
  * @category Webtech_Demo

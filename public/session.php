@@ -1,7 +1,7 @@
 <?php
 /**
  * Demo page used to demonstrate sessions.
- * 
+ *
  * PHP version 8
  *
  * @category Webtech_Demo

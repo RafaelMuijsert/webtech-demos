@@ -2,7 +2,7 @@
 /**
  * Utility file used to connect to the database.
  * Reads database credentials from ../database-creds.xml.
- * 
+ *
  * PHP version 8
  *
  * @category Webtech_Demo

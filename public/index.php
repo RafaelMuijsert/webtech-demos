@@ -1,7 +1,7 @@
 <?php
 /**
  * Home page for the webtech demo.
- * 
+ *
  * PHP version 8
  *
  * @category Webtech_Demo
