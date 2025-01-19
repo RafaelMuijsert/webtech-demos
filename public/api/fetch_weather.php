@@ -1,6 +1,14 @@
 <?php
+
+/*
+ * 
+ * 
+ */
+
+header('Content-Type: application/json');
+
 function getApiKey() {
-    $api_config = "../config/api_config.xml";
+    $api_config = "../../config/api_config.xml";
     if (!file_exists($api_config)) {
         throw new Exception("API configuration file not found");
     }
@@ -37,4 +45,13 @@ function fetchWeatherData($city) {
         return ['error' => $e->getMessage()];
     }
 }
+
+if (!isset($_GET['city'])) {
+    echo json_encode(['error' => 'City parameter is required']);
+    exit;
+}
+
+$city = $_GET['city'];
+$weatherData = fetchWeatherData($city);
+echo json_encode($weatherData);
 ?>
