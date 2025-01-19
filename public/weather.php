@@ -1,6 +1,18 @@
 <?php
+/**
+ * Demo page used to demonstrate API and webscraping functionality.
+ *
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Toon van Gelderen <t.vangelderen@uva.nl>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
+ */
+
 session_start();
-require_once("../src/database.php");
+require_once "../src/database.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +21,7 @@ require_once("../src/database.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather API - Webtech Demo</title>
+    <title>Scraping and API - Webtech Demo</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/partial/weather.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
