@@ -16,8 +16,8 @@
  * Register a new user.
  *
  * @param mysqli $databaseConnection: an active database connection.
- * @param string $email: the email address of the user.
- * @param string $password: the password of the user.
+ * @param string $email:              the email address of the user.
+ * @param string $password:           the password of the user.
  *
  * @return bool: true if the comment was posted succesfully.
  */

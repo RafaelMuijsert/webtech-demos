@@ -49,13 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form method="post" class="container">
         <h1>Post a comment</h1>
         <?php if (isset($postSuccesful)) : ?>
-          <?php if ($postSuccesful === true) : ?>
-            <p class="success">Post succesful</p>
-          <?php else : ?>
-            <p class="error">
-              Post failed: <?php echo $GLOBALS['error']?>
-            </p>
-          <?php endif; ?>
+            <?php if ($postSuccesful === true) : ?>
+                <p class="success">Post succesful</p>
+            <?php else : ?>
+                <p class="error">
+                  Post failed: <?php echo $GLOBALS['error']?>
+                </p>
+            <?php endif; ?>
         <?php endif; ?>
         <input name="username" placeholder="Username">
         <input name="text" placeholder="Comment">

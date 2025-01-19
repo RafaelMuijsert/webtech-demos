@@ -38,8 +38,8 @@ function getComments($databaseConnection)
  * Insert a comment into the database.
  *
  * @param mysqli $databaseConnection an active database connection.
- * @param string $username username of the comment.
- * @param string $text     text of the comment.
+ * @param string $username           username of the comment.
+ * @param string $text               text of the comment.
  *
  * @return bool: true if the comment was posted succesfully.
  */
