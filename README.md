@@ -52,10 +52,14 @@ mysql> GRANT ALL PRIVILEGES ON webtechdemo.* TO 'username'@'localhost';
 Lastly, we should enter the credentials of our newly created user in the
 credentials file.
 
-Provided in the project root is an example file: `database-creds.xml.example`.
-Copy this file to `database-creds.xml` and edit this file such that our username
-is present in the `<userName>` tag, and our paassword is present in the `<password>`
+Provided in the `configs/`` directory is an example file: `database-creds.xml.example`.
+Copy this file to `configs/database-creds.xml`and edit this file such that our username
+is present in the`<userName>`tag, and our paassword is present in the`<password>`
 tag.
+
+We should also provide our OpenWeatherMap API key.
+Copy the `configs/weather-api-config.xml.example` file to `configs/weather-api-config.xml`.
+Now edit the file such that our API key is present in the `<apiKey>` tag.
 
 # Running development server
 
