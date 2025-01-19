@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Demo page used to demonstrate security.
  * Contains an XSS-vulnerable comment system.
@@ -13,81 +14,21 @@
  */
 
 require "../src/database.php";
+require "../src/comments.php";
 
-/**
- * Fetch comments from database.
- *
- * @return Generator<array<string, string>>
- */
-function getComments()
-{
-    try {
-        $databaseConnection = connectToDatabase();
-    } catch (Exception $exception) {
-        die("Could not connect to database");
-    }
-
-    $sql = "SELECT username, text FROM Comment";
-    $result = $databaseConnection->query($sql);
-    if ($result === false) {
-        die("Could not read comments from database");
-    }
-    if ($result === true) {
-        return [];
-    }
-    while ($row = $result->fetch_assoc()) {
-        yield $row;
-    }
-}
-
-/**
- * Insert a comment into the database.
- *
- * @param string $username username of the comment.
- * @param string $text     text of the comment.
- *
- * @return bool: true if the comment was posted succesfully.
- */
-function postComment($username, $text)
-{
-    try {
-        $databaseConnection = connectToDatabase();
-    } catch (Exception $exception) {
-        $GLOBALS['error'] = "Could not connect to database";
-        return false;
-    }
-
-    $statement = <<<'SQL'
-    INSERT INTO Comment(username, text)
-    VALUES (?, ?);
-    SQL;
-
-    try {
-        $prepared = $databaseConnection->prepare($statement);
-        if ($prepared === false) {
-            $GLOBALS['error'] = "Could not prepare statement";
-            return false;
-        }
-
-        // $encodedName = htmlspecialchars($username);
-        // $encodedText = htmlspecialchars($text);
-
-        // $prepared->bind_param('ss', $encodedName, $encodedText);
-
-        $prepared->bind_param('ss', $username, $text);
-        $prepared->execute();
-        $databaseConnection->commit();
-    } catch (Exception $e) {
-        $GLOBALS['error'] = "Could not post comment";
-        return false;
-    }
-    return true;
+try {
+    $databaseConnection = connectToDatabase();
+} catch (Exception $e) {
+    die("Could not connect to database");
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $postSuccesful = postComment($_POST['username'], $_POST['text']);
+    try {
+        $postSuccesful = postComment($databaseConnection, $_POST['username'], $_POST['text']);
+    } catch (Exception $e) {
+        $GLOBALS['error'] = "Could not post comment: $e";
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -108,19 +49,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form method="post" class="container">
         <h1>Post a comment</h1>
         <?php if (isset($postSuccesful)) : ?>
-            <?php if ($postSuccesful === true) : ?>
-                <p class="success">Post succesful</p>
-            <?php else: ?>
-                <p class="error">
-                    Post failed: <?php echo $GLOBALS['error']?>
-                </p>
-            <?php endif; ?>
+          <?php if ($postSuccesful === true) : ?>
+            <p class="success">Post succesful</p>
+          <?php else : ?>
+            <p class="error">
+              Post failed: <?php echo $GLOBALS['error']?>
+            </p>
+          <?php endif; ?>
         <?php endif; ?>
         <input name="username" placeholder="Username">
         <input name="text" placeholder="Comment">
         <input type="submit" class="btn-primary" value="Post comment">
       </form>
-      <?php foreach (getComments() as $comment): ?>
+      <?php foreach (getComments($databaseConnection) as $comment) : ?>
         <div class="container comment">
           <div>
             <b><?php echo $comment['username']?>:</b>

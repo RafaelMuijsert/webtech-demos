@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Demo page used to demonstrate web scraping.
  *
@@ -76,7 +77,7 @@ foreach ($countryElements as $country) {
         <h1>Webscraping + API</h1>
         <p>Select a country</p>
         <select id="country-selector">
-        <?php foreach ($countries as $country): ?>
+        <?php foreach ($countries as $country) : ?>
           <option><?php echo $country; ?></option>
         <?php endforeach; ?>
         </select>

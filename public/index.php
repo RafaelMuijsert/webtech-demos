@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Home page for the webtech demo.
  *
@@ -10,6 +11,7 @@
  * @license  https://opensource.org/licenses/MIT MIT License
  * @link     http://localhost/
  */
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

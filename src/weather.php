@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Utility file used to get the current weather from OpenWeatherMap.
  * Reads API key from ../config/weather-api-config.xml.
@@ -80,7 +79,6 @@ function fetchWeatherData($location)
             throw new Exception("API Response contains malformed data");
         }
         return $data;
-
     } catch (Exception $e) {
         return ['error' => $e->getMessage()];
     }

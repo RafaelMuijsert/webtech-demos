@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Demo page to demonstrate registration functionality.
  *
@@ -10,57 +11,21 @@
  * @license  https://opensource.org/licenses/MIT MIT License
  * @link     http://localhost/
  */
+
 require_once "../src/database.php";
+require_once "../src/account.php";
 
-/**
- * Register a new user.
- * Reads email and password from $_POST data.
- *
- * @return bool: true if the comment was posted succesfully.
- */
-function handleRegistration()
-{
-    $PASSWORD_MIN_CHARACTERS = 8;
-
-    $email = $_POST['user-email'];
-    $password = $_POST['user-password'];
-
-    if (strlen($password) < $PASSWORD_MIN_CHARACTERS) {
-        $error = "Password should be at least $PASSWORD_MIN_CHARACTERS characters";
-        $GLOBALS['error'] = $error;
-        return false;
-    } else {
-        try {
-            $databaseConnection = connectToDatabase();
-        } catch (Exception $exception) {
-            $GLOBALS['error'] = "Could not connect to database";
-            return false;
-        }
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $statement = <<<'SQL'
-      INSERT INTO User(email, password)
-      VALUES (?, ?);
-      SQL;
-
-        try {
-            $prepared = $databaseConnection->prepare($statement);
-            if ($prepared === false) {
-                $GLOBALS['error'] = "Could not prepare statement";
-                return false;
-            }
-            $prepared->bind_param('ss', $email, $password);
-            $prepared->execute();
-            $databaseConnection->commit();
-        } catch (Exception $e) {
-            $GLOBALS['error'] = "Could not create user";
-            return false;
-        }
-    }
-    return true;
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $registrationSuccesful = handleRegistration();
+    try {
+        $databaseConnection = connectToDatabase();
+        $email = $_POST['user-email'];
+        $password = $_POST['user-password'];
+        $registrationSuccesful = registerUser($databaseConnection, $email, $password);
+    } catch (Exception $e) {
+        $GLOBALS['error'] = "Could not register account: $e";
+        return false;
+    }
 }
 ?>
 
@@ -84,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($registrationSuccesful)) : ?>
                 <?php if ($registrationSuccesful === true) : ?>
                     <p class="success">Registration succesful</p>
-                <?php else: ?>
+                <?php else : ?>
                     <p class="error">
                         Registration failed: <?php echo $GLOBALS['error']?>'    
                     </p>

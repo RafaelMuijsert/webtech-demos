@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Demo page used to demonstrate API and webscraping functionality.
  *

@@ -13,7 +13,6 @@
  * @link     http://localhost/
  */
 
-
 require_once "../../src/weather.php";
 
 header('Content-Type: application/json');

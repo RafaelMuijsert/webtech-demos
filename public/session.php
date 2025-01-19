@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Demo page used to demonstrate sessions.
  *
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container">
           <div>Hello there, <?php echo $_SESSION['name']?></div>
         </div>
-      <?php else: ?>
+      <?php else : ?>
         <form class="container" method="post">
           <h1>Who are you?</h1>
           <input id="name-input" name="name" placeholder="Enter your name...">

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Demo page used to demonstrate CSS styling.
  *
@@ -10,6 +11,7 @@
  * @license  https://opensource.org/licenses/MIT MIT License
  * @link     http://localhost/
  */
+
 ?>
 
 <!DOCTYPE html>

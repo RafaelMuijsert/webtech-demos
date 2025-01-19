@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Utility file used to connect to the database.
  * Reads database credentials from ../database-creds.xml.
@@ -12,8 +13,6 @@
  * @link     http://localhost/
  */
 
-$HOST = 'localhost';
-$DATABASE = 'webtechdemo';
 
 /**
  * Connect to the database.
@@ -22,9 +21,11 @@ $DATABASE = 'webtechdemo';
  */
 function connectToDatabase()
 {
+    $HOST = 'localhost';
+    $DATABASE = 'webtechdemo';
     // Using __DIR__ ensures the path is always relative
     // to the directory of the current file.
-    $file = file_get_contents(__DIR__ . "../config/database-creds.xml", true);
+    $file = file_get_contents(__DIR__ . "/../config/database-creds.xml", true);
     if ($file === false) {
         die("Could not read database credentials");
     }
@@ -35,10 +36,10 @@ function connectToDatabase()
     $user = $xml->userName;
     $password = $xml->password;
     $connection = new mysqli(
-        $GLOBALS['HOST'],
+        $HOST,
         $user,
         $password,
-        $GLOBALS['DATABASE'],
+        $DATABASE,
     );
     if ($connection->connect_error) {
         die('Connection failed: ' . $connection->connect_error);
