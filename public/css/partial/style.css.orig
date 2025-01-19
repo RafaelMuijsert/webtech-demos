@@ -1,0 +1,17 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.item-left {
+  padding: 1rem;
+}
+
+.item-right {
+  margin: 1rem;
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> API/weather_API

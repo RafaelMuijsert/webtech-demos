@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+<link rel="stylesheet" href="/css/partial/footer.css">
+=======
+<link rel="stylesheet" href="css/partial/footer.css">
+>>>>>>> API/weather_API
+<footer>
+Copyright (C) 2025
+</footer>
