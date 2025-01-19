@@ -22,7 +22,7 @@ $DATABASE = 'webtechdemo';
  */
 function connectToDatabase()
 {
-    $file = file_get_contents("../database-creds.xml", true);
+    $file = file_get_contents("../config/database-creds.xml", true);
     if ($file === false) {
         die("Could not read database credentials");
     }
