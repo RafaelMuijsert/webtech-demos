@@ -9,7 +9,7 @@ async function getWeather() {
     }
     
     try {
-        const response = await fetch(`/api/fetch_weather.php?city=${encodeURIComponent(city)}`);
+        const response = await fetch(`/api/weather.php?location=${encodeURIComponent(city)}`);
         const data = await response.json();
         
         if (data.error) {

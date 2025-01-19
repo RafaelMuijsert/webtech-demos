@@ -22,7 +22,9 @@ $DATABASE = 'webtechdemo';
  */
 function connectToDatabase()
 {
-    $file = file_get_contents("../config/database-creds.xml", true);
+    // Using __DIR__ ensures the path is always relative
+    // to the directory of the current file.
+    $file = file_get_contents(__DIR__ . "../config/database-creds.xml", true);
     if ($file === false) {
         die("Could not read database credentials");
     }

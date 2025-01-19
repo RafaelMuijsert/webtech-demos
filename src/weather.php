@@ -1,14 +1,22 @@
-<?php
+<?php 
 
-/*
- * 
- * 
+/**
+ * Utility file used to get the current weather from OpenWeatherMap.
+ * Reads API key from ../config/weather-api-config.xml.
+ *
+ * PHP version 8
+ *
+ * @category Webtech_Demo
+ * @package  Webtech_Demo
+ * @author   Toon van Gelderen <t.vangelderen@uva.nl>
+ * @license  https://opensource.org/licenses/MIT MIT License
+ * @link     http://localhost/
  */
 
-header('Content-Type: application/json');
-
 function getApiKey() {
-    $api_config = "../../config/api_config.xml";
+    // Using __DIR__ ensures the path is always relative
+    // to the directory of the current file.
+    $api_config = __DIR__ . "/../config/weather-api-config.xml";
     if (!file_exists($api_config)) {
         throw new Exception("API configuration file not found");
     }
@@ -18,12 +26,12 @@ function getApiKey() {
     return $xml->apiKey;
 }
 
-function fetchWeatherData($city) {
+function fetchWeatherData($location) {
     try {
         $apiKey = getApiKey();
         $url = sprintf(
             "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric",
-            urlencode($city),
+            urlencode($location),
             $apiKey
         );
         
@@ -45,13 +53,4 @@ function fetchWeatherData($city) {
         return ['error' => $e->getMessage()];
     }
 }
-
-if (!isset($_GET['city'])) {
-    echo json_encode(['error' => 'City parameter is required']);
-    exit;
-}
-
-$city = $_GET['city'];
-$weatherData = fetchWeatherData($city);
-echo json_encode($weatherData);
 ?>
