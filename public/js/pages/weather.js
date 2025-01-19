@@ -1,15 +1,15 @@
 async function getWeather() {
-    const cityInput = document.getElementById('city-input');
+    const selector = document.getElementById('country-selector');
     const resultDiv = document.getElementById('weather-result');
-    const city = cityInput.value.trim();
+    const location = selector.value.trim();
     
-    if (!city) {
-        resultDiv.innerHTML = '<p class="error">Please enter a city name</p>';
+    if (!location) {
+        resultDiv.innerHTML = '<p class="error">Please select a location</p>';
         return;
     }
     
     try {
-        const response = await fetch(`/api/weather.php?location=${encodeURIComponent(city)}`);
+        const response = await fetch(`/api/weather.php?location=${encodeURIComponent(location)}`);
         const data = await response.json();
         
         if (data.error) {
@@ -30,12 +30,3 @@ async function getWeather() {
         resultDiv.innerHTML = '<p class="error">Failed to fetch weather data</p>';
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const cityInput = document.getElementById('city-input');
-    cityInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            getWeather();
-        }
-    });
-});

@@ -26,4 +26,3 @@ if (!isset($_GET['location'])) {
 $city = $_GET['location'];
 $weatherData = fetchWeatherData($city);
 echo json_encode($weatherData);
-?>

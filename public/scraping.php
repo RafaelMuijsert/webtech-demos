@@ -65,19 +65,25 @@ foreach ($countryElements as $country) {
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/partial/style.css" type="text/css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="js/main.js"></script>
+    <script src="js/pages/weather.js"></script>
   </head>
   <body>
     <?php require_once "../src/components/header.php" ?>
     <?php require_once "../src/components/navbar.php" ?>
     <main>
       <div class="container">
-        <h1>Webscraping</h1>
+        <h1>Webscraping + API</h1>
         <p>Select a country</p>
-        <select name="countries">
+        <select id="country-selector">
         <?php foreach ($countries as $country): ?>
           <option><?php echo $country; ?></option>
         <?php endforeach; ?>
         </select>
+        <div class="search-container">
+          <button class="btn-primary" onclick="getWeather()">Search</button>
+        </div>
+        <div id="weather-result"></div>
       </div>
     </main>
     <?php require_once "../src/components/footer.php" ?>
