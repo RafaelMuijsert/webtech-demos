@@ -1,12 +1,1 @@
-RewriteEngine On
-RewriteBase /
 
-DirectoryIndex public/index.php
-
-RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
-RewriteRule ^(.*)$ public/$1 [L]
-RewriteRule ^(.*)$ public/index.php [L]
-
-RedirectMatch 403 ^/src/.*$
-RedirectMatch 403 ^/config/.*$
-RedirectMatch 403 ^/bin/.*$
