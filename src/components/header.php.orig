@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-<link rel="stylesheet" href="/css/partial/header.css" type="text/css">
-=======
-<link rel="stylesheet" href="css/partial/header.css" type="text/css">
->>>>>>> API/weather_API
-<header>
-<h1 class="header-title">Webtech Demo</h1>
-</header>
