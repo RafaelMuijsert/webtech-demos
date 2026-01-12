@@ -1,1 +1,2 @@
-database-creds.xml
+config/*
+!config/*.example
